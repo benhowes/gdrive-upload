@@ -158,6 +158,7 @@ async function uploadFile(fileName, filePath, override, uploadFolderId) {
         });
 
         const files = res.data.files;
+        actions.debug(`files: ${JSON.stringify(files)}`);
 
         for (const file in files) {
             if (file.name === fileName) {
