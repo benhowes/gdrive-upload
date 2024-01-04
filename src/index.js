@@ -155,7 +155,9 @@ async function uploadFile(fileName, filePath, override, uploadFolderId) {
         const { files } = await DRIVE.files.list({
             q: `'${uploadFolderId}' in parents`,
             fields: 'nextPageToken, files(id, name)',
-        });
+        }).data;
+
+        actions.debug(`duplicate file names: ${JSON.stringify(files)}`);
 
         for (const file in files) {
             if (file.name === fileName) {
