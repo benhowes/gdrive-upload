@@ -160,7 +160,9 @@ async function uploadFile(fileName, filePath, override, uploadFolderId) {
         const files = res.data.files;
         actions.debug(`files: ${JSON.stringify(files)}`);
 
-        for (const file in files) {
+        for (const file of files) {
+            actions.debug(`file: ${JSON.stringify(file)}`);
+
             if (file.name === fileName) {
                 const fileId = file.id;
 
