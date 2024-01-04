@@ -157,11 +157,7 @@ async function uploadFile(fileName, filePath, override, uploadFolderId) {
             fields: 'nextPageToken, files(id, name)',
         });
 
-        actions.debug(`duplicate file res: ${JSON.stringify(res)}`);
-
-        const files = res.files;
-
-        actions.debug(`duplicate file names: ${JSON.stringify(files)}`);
+        const files = res.data.files;
 
         for (const file in files) {
             if (file.name === fileName) {
